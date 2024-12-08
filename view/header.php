@@ -6,34 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DA1-YAME</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-d6dSUk9HYkVe7MZ1q2i8d8yNLE7FgAZtZHKCpmJ92pGRJN21zZwmy0oVOxOMvjXk" crossorigin="anonymous">
-    <link rel="stylesheet" href="layout/css1/linearicons.css">
-    <link rel="stylesheet" href="layout/css1/owl.carousel.css">
-    <link rel="stylesheet" href="layout/css1/themify-icons.css">
-    <link rel="stylesheet" href="layout/css1/font-awesome.min.css">
-    <link rel="stylesheet" href="layout/css1/nice-select.css">
-    <link rel="stylesheet" href="layout/css1/nouislider.min.css">
-    <link rel="stylesheet" href="layout/css1/bootstrap.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    
+    <!-- Nice Select -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="layout/css1/main.css">
-    <link rel="stylesheet" href="layout/css1/linearicons.css">
-    <link rel="stylesheet" href="layout/css1/owl.carousel.css">
-    <link rel="stylesheet" href="layout/css1/themify-icons.css">
-    <link rel="stylesheet" href="layout/css1/font-awesome.min.css">
-    <link rel="stylesheet" href="layout/css1/nice-select.css">
-    <link rel="stylesheet" href="layout/css1/nouislider.min.css">
-    <link rel="stylesheet" href="layout/css1/bootstrap.css">
-    <link rel="stylesheet" href="layout/css1/main.css">
-    <link rel="stylesheet" type="text/css" href="layout/styles/bootstrap4/bootstrap.min.css">
-    <link href="layout/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="layout/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="layout/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="layout/plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="layout/plugins/slick-1.8.0/slick.css">
-    <link rel="stylesheet" type="text/css" href="layout/styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="layout/styles/blog_responsive.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="layout/styless.css">
     <link rel="stylesheet" href="layout/styles/profile_view.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
+    <!-- Nice Select JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+
     <style>
         .primarys-btn {
             display: inline-block;

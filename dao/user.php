@@ -22,16 +22,12 @@ function get_all_users($new)
     return pdo_query($sql);
 }
 
-function get_user_by_id($user_id)
-{
-    $sql = "SELECT * FROM user WHERE id = ?";
-    return pdo_query_one($sql, $user_id);
-}
+
 
 if (!function_exists('is_user_logged_in')) {
     function is_user_logged_in()
     {
-        return isset($_SESSION['user_id']);
+        return isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true;
     }
 }
 
@@ -191,4 +187,10 @@ function get_soluong_user()
     $sql = "SELECT COUNT(id) FROM user WHERE 1";
     $count = pdo_query_value($sql);
     return $count;
+}
+
+function get_user_by_id($id)
+{
+    $sql = "SELECT * FROM user WHERE id = ?";
+    return pdo_query_one($sql, $id);
 }

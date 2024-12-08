@@ -1,5 +1,21 @@
 {
     "cSpell.words": [
         "adsf"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "username": "root",
+            "database": "yame_store",
+            "name": "yame_store",
+            "password": ""
+        }
     ]
 }

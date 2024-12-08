@@ -174,3 +174,12 @@ $html_chitietsp = showchitietsp($spchitiet);
         MainImg.src = smallimg[3].src;
     }
 </script>
+
+<form action="index.php?pg=cart" method="POST" class="add-to-cart-form">
+    <input type="hidden" name="id" value="<?= $spchitiet['id'] ?>">
+    <input type="hidden" name="name" value="<?= $spchitiet['ten_sp'] ?>">
+    <input type="hidden" name="img" value="<?= $spchitiet['hinh'] ?>">
+    <input type="hidden" name="price" value="<?= $spchitiet['gia'] ?>">
+    <input type="number" name="soluong" value="1" min="1">
+    <button type="submit" name="cart" class="normal">Thêm Vào Giỏ Hàng</button>
+</form>

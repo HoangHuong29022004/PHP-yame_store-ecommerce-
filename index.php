@@ -60,6 +60,15 @@ if (!isset($_GET['pg'])) {
             break;
         case 'cart':
             if (isset($_POST['cart'])) {
+                if (!isset($_SESSION['user_logged_in']) || !$_SESSION['user_logged_in']) {
+                    echo '<script>
+                        alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
+                        window.location.href = "index.php?pg=dangnhap";
+                    </script>';
+                    exit();
+                }
+
+                $id_user = $_SESSION['id_user'];
                 $product_id = $_POST['id'];
                 $product_name = $_POST['name'];
                 $product_img = $_POST['img'];
@@ -67,25 +76,18 @@ if (!isset($_GET['pg'])) {
                 $product_quantity = $_POST['soluong'];
                 $thanhtien = $product_price * $product_quantity;
 
-                if (!$is_user_logged_in) {
-                    echo '<script>alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.");</script>';
-                    echo '<script>window.location.href = "index.php?pg=dangnhap";</script>';
-                    exit;
-                } else {
-                    $id_user = $_SESSION['id_user'];
-                }
-
                 $cart = get_cart_product($product_id, $id_user);
-                $id_cart = $cart['id_product'];
-                $user_cart = $cart['id_user'];
-                if ($id_cart == $product_id && $user_cart == $id_user) {
-                    $up_quantity = $cart['soluong'] + $_POST['soluong'];
-                    $up_thanhtien = $up_quantity * $product_price;
-                    updates_cart($product_id, $up_quantity, $up_thanhtien, $id_user);
+                
+                if ($cart) {
+                    $new_quantity = $cart['soluong'] + $product_quantity;
+                    $new_thanhtien = $new_quantity * $product_price;
+                    updates_cart($product_id, $new_quantity, $new_thanhtien, $id_user);
                 } else {
                     addcart($product_id, $id_user, $product_name, $product_img, $product_price, $product_quantity, $thanhtien);
                 }
+
                 header('Location: index.php?pg=cart');
+                exit();
             }
             include "view/cart.php";
             break;
@@ -137,40 +139,36 @@ if (!isset($_GET['pg'])) {
                 header("Location: index.php");
                 exit();
             }
-            $checkMK = 0;
-            $saimatkhau = '';
-            $saitaikhoan = '';
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (isset($_POST['username']) && isset($_POST['password'])) {
                     $username = $_POST['username'];
                     $password = $_POST['password'];
+                    
+                    // Lấy thông tin user
                     $user = get_user_by_username($username);
+                    
                     if ($user) {
-                        $id_user = $user['id'];
-                        $_SESSION['name'] = $username;
-                        $_SESSION['id_user'] = $id_user;
-                        $login_result = login_user($username, $password);
-                        if ($login_result) {
-                            $_SESSION['user_id'] = $login_result;
-                            if (isset($_SESSION['is_admin']) && ($_SESSION['is_admin'] == 1)) {
-                                echo '<center><p style="color: green;">Đăng nhập thành công!</p></center>';
+                        // Kiểm tra mật khẩu
+                        if (password_verify($password, $user['password'])) {
+                            // Lưu session
+                            $_SESSION['user_logged_in'] = true;
+                            $_SESSION['name'] = $username;
+                            $_SESSION['id_user'] = $user['id'];
+                            $_SESSION['role'] = $user['role']; // Thêm role nếu cần
+
+                            if ($user['role'] == 1) {
                                 header("Location: admin/index.php");
                             } else {
-                                echo '<center><p style="color: green;">Đăng nhập thành công!</p></center>';
                                 header("Location: index.php");
                             }
                             exit();
                         } else {
-                            $checkMK = 1;
-                            $saimatkhau = '<p style="color: red;">Đăng nhập thất bại: sai mật khẩu</p>';
+                            $error = "Sai mật khẩu!";
                         }
                     } else {
-                        $checkMK = 2;
-                        $saitaikhoan = '<p style="color: red;">Tên đăng nhập không tồn tại!</p>';
+                        $error = "Tài khoản không tồn tại!";
                     }
-                } else {
-                    echo '<center><p style="color: red;">Thiếu thông tin đăng nhập!</p></center>';
                 }
             }
             include "view/dangnhap.php";

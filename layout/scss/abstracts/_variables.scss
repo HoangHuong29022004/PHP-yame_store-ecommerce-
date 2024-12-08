@@ -1,0 +1,55 @@
+// Colors
+$primary-color: #088178;
+$secondary-color: #1a1a1a;
+$white: #ffffff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Typography
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+// Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Z-index
+$z-layers: (
+  modal: 2000,
+  overlay: 1000,
+  dropdown: 500,
+  header: 100,
+  footer: 100
+);
+
+// Export variables
+:export {
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  white: $white;
+} 

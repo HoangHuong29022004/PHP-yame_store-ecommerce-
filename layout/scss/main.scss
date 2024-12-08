@@ -1,18 +1,68 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:color';
 
-// including variables and mixins
-@import "theme/variables";
-@import "theme/mixins";
-@import "theme/predefine";
-@import "theme/reset";
+// Abstracts
+@use 'abstracts/variables' as vars;
+@use 'abstracts/mixins' as mix;
 
+// Base
+@use 'base/reset';
+@use 'base/typography';
 
-// Custom Scss 
-@import "theme/elements";
-@import "theme/header";
-@import "theme/banner";
-@import "theme/home";
-@import "theme/common";
-@import "theme/product";
-@import "theme/blog";
-@import "theme/contact";
-@import "theme/footer";
+// Components
+@use 'components/buttons';
+@use 'components/forms';
+@use 'components/cards';
+@use 'components/navbar';
+
+// Layouts
+@use 'layouts/header';
+@use 'layouts/footer';
+@use 'layouts/grid';
+
+// Pages
+@use 'pages/home';
+@use 'pages/shop';
+@use 'pages/product';
+@use 'pages/cart';
+
+// Themes
+@use 'themes/default';
+
+// Vendors - Sử dụng @use cho Bootstrap
+@use '../../node_modules/bootstrap/scss/bootstrap' with (
+  $primary: vars.$primary-color,
+  $secondary: vars.$secondary-color
+);
+
+// Font Awesome - Import một lần và sử dụng biến
+@use '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome' with (
+  $fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts'
+);
+@use '../../node_modules/@fortawesome/fontawesome-free/scss/solid' as fa-solid;
+@use '../../node_modules/@fortawesome/fontawesome-free/scss/brands' as fa-brands;
+
+// Swiper
+@use '../../node_modules/swiper/swiper-bundle' as swiper;
+
+// Custom styles after all imports
+@layer base, components, utilities;
+
+@layer base {
+  :root {
+    --primary: #{vars.$primary-color};
+    --secondary: #{vars.$secondary-color};
+  }
+}
+
+// Fix cho các warning về mixed declarations
+@layer utilities {
+  .font-weight-inherit {
+    font-weight: inherit;
+  }
+  
+  .line-height-inherit {
+    line-height: inherit;
+  }
+}

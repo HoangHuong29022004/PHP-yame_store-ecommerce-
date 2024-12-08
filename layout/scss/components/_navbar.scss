@@ -1,0 +1,199 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+@use 'sass:map';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: map.get(vars.$z-layers, header);
+  background: vars.$white;
+  box-shadow: 0 2px 10px rgba(vars.$secondary-color, 0.1);
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    padding: 0.5rem 0;
+    background: rgba(vars.$white, 0.98);
+  }
+
+  .navbar-brand {
+    img {
+      height: 50px;
+      width: auto;
+      transition: all 0.3s ease;
+
+      @include mix.respond-to(sm) {
+        height: 60px;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: 0;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: none;
+      position: relative;
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: vars.$secondary-color;
+        transition: all 0.3s ease;
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    margin: 0 0.5rem;
+
+    .nav-link {
+      color: vars.$secondary-color;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+
+      &:hover,
+      &.active {
+        color: vars.$primary-color;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: vars.$primary-color;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      &:hover::after,
+      &.active::after {
+        width: 70%;
+      }
+    }
+  }
+
+  .search-form {
+    position: relative;
+    width: 300px;
+
+    @include mix.respond-to(md) {
+      width: 400px;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem 2.5rem 0.5rem 1rem;
+      border: 1px solid vars.$gray-300;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: vars.$primary-color;
+        box-shadow: 0 0 0 3px rgba(vars.$primary-color, 0.1);
+      }
+    }
+
+    button {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: vars.$gray-600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: vars.$primary-color;
+      }
+    }
+  }
+
+  .user-profile {
+    .dropdown-toggle {
+      padding: 0;
+      
+      &::after {
+        display: none;
+      }
+
+      img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid vars.$primary-color;
+      }
+    }
+
+    .dropdown-menu {
+      margin-top: 1rem;
+      border: none;
+      box-shadow: 0 5px 15px rgba(vars.$secondary-color, 0.1);
+      
+      .dropdown-item {
+        padding: 0.75rem 1.5rem;
+        
+        i {
+          width: 20px;
+          margin-right: 0.5rem;
+          color: vars.$primary-color;
+        }
+
+        &:hover {
+          background-color: rgba(vars.$primary-color, 0.1);
+          color: vars.$primary-color;
+        }
+      }
+    }
+  }
+
+  .cart-icon {
+    position: relative;
+    font-size: 1.25rem;
+    color: vars.$secondary-color;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: vars.$primary-color;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: vars.$primary-color;
+      color: vars.$white;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 50%;
+      min-width: 18px;
+      text-align: center;
+    }
+  }
+}
